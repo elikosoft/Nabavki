@@ -1,20 +1,21 @@
-﻿CREATE TABLE [dbo].[Partner](
-	[IdPartner] [int] IDENTITY(1,1) NOT NULL,
+CREATE TABLE [dbo].[Artikli](
+	[IdArtikli] [int] IDENTITY(1,1) NOT NULL,
+	[Sifra] [nvarchar](50) NULL,
 	[Naziv] [nvarchar](150) NULL,
-	[IdFirma] [int] NULL,
- CONSTRAINT [PK_Partner] PRIMARY KEY CLUSTERED 
+	[IdPartner] [int] NULL,
+ CONSTRAINT [PK_Artikli] PRIMARY KEY CLUSTERED 
 (
-	[IdPartner] ASC
+	[IdArtikli] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
 
-ALTER TABLE [dbo].[Partner]  WITH CHECK ADD  CONSTRAINT [FK_Partner_Firma] FOREIGN KEY([IdFirma])
-REFERENCES [dbo].[Firma] ([IdFirma])
+ALTER TABLE [dbo].[Artikli]  WITH CHECK ADD  CONSTRAINT [FK_Artikli_Partner] FOREIGN KEY([IdPartner])
+REFERENCES [dbo].[Partner] ([IdPartner])
 GO
 
-ALTER TABLE [dbo].[Partner] CHECK CONSTRAINT [FK_Partner_Firma]
+ALTER TABLE [dbo].[Artikli] CHECK CONSTRAINT [FK_Artikli_Partner]
 GO
 
 
